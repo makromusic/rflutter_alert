@@ -7,6 +7,7 @@
  * See LICENSE for distribution and usage details.
  */
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -87,10 +88,8 @@ class Alert {
 
   /// Alert dialog content widget
   Widget _buildDialog() {
-    final Widget _child = ConstrainedBox(
-      constraints: style.constraints ??
-          BoxConstraints.expand(
-              width: double.infinity, height: double.infinity),
+    final Widget _child = BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
       child: Align(
         alignment: style.alertAlignment,
         child: SingleChildScrollView(
@@ -155,6 +154,7 @@ class Alert {
         ),
       ),
     );
+
     return onWillPopActive
         ? WillPopScope(onWillPop: () async => false, child: _child)
         : _child;
