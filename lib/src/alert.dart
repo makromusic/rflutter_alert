@@ -10,6 +10,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/src/custom_animated_container.dart';
 
 import 'alert_style.dart';
 import 'animation_transition.dart';
@@ -177,29 +178,27 @@ class Alert {
 // Returns the close button on the top right
   Widget _getCloseButton() {
     return style.isCloseButton
-        ? Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
-            child: Container(
-              alignment: FractionalOffset.topRight,
+        ? GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+              closeFunction();
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
               child: Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      '$kImagePath/close.png',
-                      package: 'rflutter_alert',
+                alignment: FractionalOffset.topRight,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        '$kImagePath/close.png',
+                        package: 'rflutter_alert',
+                      ),
                     ),
                   ),
-                ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                      closeFunction();
-                    },
-                  ),
+                  child: Container(),
                 ),
               ),
             ),
