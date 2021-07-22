@@ -96,7 +96,6 @@ class PopupDialog extends StatelessWidget {
       context: context,
       title: "RFLUTTER ALERT",
       desc: "Flutter is more awesome with RFlutter Alert.",
-      alertAnimation: fadeAlertAnimation,
     ).show();
   }
 
@@ -169,25 +168,24 @@ class PopupDialog extends StatelessWidget {
   _onAlertWithStylePressed(context) {
     // Reusable alert style
     var alertStyle = AlertStyle(
-        animationType: AnimationType.fromTop,
-        isCloseButton: false,
-        isOverlayTapDismiss: false,
-        descStyle: TextStyle(fontWeight: FontWeight.bold),
-        animationDuration: Duration(milliseconds: 400),
-        alertBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0.0),
-          side: BorderSide(
-            color: Colors.grey,
-          ),
+      animationType: AnimationType.fromTop,
+      isCloseButton: false,
+      isOverlayTapDismiss: false,
+      descStyle: TextStyle(fontWeight: FontWeight.bold),
+      animationDuration: Duration(milliseconds: 400),
+      alertBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(0.0),
+        side: BorderSide(
+          color: Colors.grey,
         ),
-        titleStyle: TextStyle(
-          color: Colors.red,
-        ),
-        constraints: BoxConstraints.expand(width: 300),
-        //First to chars "55" represents transparency of color
-        overlayColor: Color(0x55000000),
-        alertElevation: 0,
-        alertAlignment: Alignment.topCenter);
+      ),
+      titleStyle: TextStyle(
+        color: Colors.red,
+      ),
+      constraints: BoxConstraints.expand(width: 300),
+      //First to chars "55" represents transparency of color
+      overlayColor: Color(0x55000000),
+    );
 
     // Alert dialog using custom alert style
     Alert(
@@ -257,7 +255,8 @@ class PopupDialog extends StatelessWidget {
   _onAlertWithRootNavigator(BuildContext context) {
     Navigator.of(context).push(
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => CupertinoTabScaffold(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(icon: Icon(Icons.account_circle)),
@@ -282,20 +281,23 @@ class PopupDialog extends StatelessWidget {
                             context: context,
                             title:
                                 "pop() use root navigator ?\n\n* False will pop Alert and stay in CupertinoTabView\n* True will pop Alert and CupertinoTabView",
-                            useRootNavigator: false,
                             buttons: [
                               DialogButton(
                                 onPressed: () => Navigator.of(context).pop(),
                                 child: Text(
                                   "false",
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
                                 ),
                               ),
                               DialogButton(
-                                onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+                                onPressed: () =>
+                                    Navigator.of(context, rootNavigator: true)
+                                        .pop(),
                                 child: Text(
                                   "true",
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
                                 ),
                               )
                             ]).show(),
@@ -306,20 +308,23 @@ class PopupDialog extends StatelessWidget {
                             context: context,
                             title:
                                 "pop() use root navigator ?\n\n* False will pop CupertinoTabView and raise error in the background !\n* True will pop Alert",
-                            useRootNavigator: true,
                             buttons: [
                               DialogButton(
                                 onPressed: () => Navigator.of(context).pop(),
                                 child: Text(
                                   "false",
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
                                 ),
                               ),
                               DialogButton(
-                                onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+                                onPressed: () =>
+                                    Navigator.of(context, rootNavigator: true)
+                                        .pop(),
                                 child: Text(
                                   "true",
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
                                 ),
                               )
                             ]).show(),

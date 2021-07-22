@@ -10,11 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  matrix4_transform: ^1.1.4
+  matrix4_transform: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-    
+
 flutter:
   assets:
     - assets/images/
