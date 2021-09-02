@@ -88,78 +88,65 @@ class Alert {
       child: Center(
         child: Center(
           child: SingleChildScrollView(
-            child: AlertDialog(
-              backgroundColor: style.backgroundColor ??
-                  Theme.of(context).dialogBackgroundColor,
-              shape: _defaultShape(),
-              titlePadding: EdgeInsets.all(0.0),
-              title: Container(
-                child: Center(
-                  child: Column(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: AlertDialog(
+                backgroundColor: style.backgroundColor ??
+                    Theme.of(context).dialogBackgroundColor,
+                shape: _defaultShape(),
+                // titlePadding: EdgeInsets.all(16.0),
+                title: Container(
+                  child: Center(
+                      child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      _getCloseButton(),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            20, (style.isCloseButton ? 0 : 20), 20, 0),
-                        child: Column(
-                          children: <Widget>[
-                            _getImage(),
-                            title != null
-                                ? SizedBox(
-                                    height: 15,
-                                  )
-                                : Container(),
-                            title != null
-                                ? Text(
-                                    title,
-                                    style: style.titleStyle,
-                                    textAlign: TextAlign.center,
-                                  )
-                                : Container(),
-                            SizedBox(
-                              height: desc == null ? 5 : 10,
-                            ),
-                            desc == null
-                                ? Container()
-                                : RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(
-                                      // Note: Styles for TextSpans must be explicitly defined.
-                                      // Child text spans will inherit styles from parent
+                      SizedBox(
+                        height: title == null ? 0 : 8,
+                      ),
+                      title != null
+                          ? Text(
+                              title,
+                              style: style.titleStyle,
+                              textAlign: TextAlign.center,
+                            )
+                          : Container(),
+                      SizedBox(
+                        height: title == null ? 0 : 16,
+                      ),
+                      _getImage(),
+                      desc == null
+                          ? Container()
+                          : RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                style: style.descStyle,
+                                // Note: Styles for TextSpans must be explicitly defined.
+                                // Child text spans will inherit styles from parent
 
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                          text: desc,
-                                          style: TextStyle(
-                                            color:
-                                                Color.fromRGBO(0, 173, 181, 1),
-                                          ),
-                                        ),
-                                        TextSpan(text: desc1),
-                                        TextSpan(
-                                          text: desc2,
-                                          style: TextStyle(
-                                            color:
-                                                Color.fromRGBO(0, 173, 181, 1),
-                                          ),
-                                        ),
-                                        TextSpan(text: desc3),
-                                      ],
-                                    ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: desc,
                                   ),
-                            content == null ? Container() : content,
-                          ],
-                        ),
-                      )
+                                  TextSpan(text: desc1),
+                                  TextSpan(
+                                    text: desc2,
+                                  ),
+                                  TextSpan(text: desc3),
+                                ],
+                              ),
+                            ),
+                      SizedBox(
+                        height: desc == null ? 0 : 24,
+                      ),
+                      content == null ? Container() : content,
                     ],
-                  ),
+                  )),
                 ),
-              ),
-              contentPadding: style.buttonAreaPadding,
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _getButtons(),
+                contentPadding: style.buttonAreaPadding,
+                content: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _getButtons(),
+                ),
               ),
             ),
           ),
@@ -213,7 +200,8 @@ class Alert {
       buttons.forEach(
         (button) {
           var buttonWidget = Padding(
-            padding: const EdgeInsets.only(left: 2, right: 2),
+            padding:
+                const EdgeInsets.only(left: 0, right: 16, top: 0, bottom: 0),
             child: button,
           );
           if (button.width != null && buttons.length == 1) {
@@ -244,31 +232,41 @@ class Alert {
 
 // Returns alert image for icon
   Widget _getImage() {
-    Widget response = image ?? Container();
+    Widget response = image != null
+        ? Padding(padding: EdgeInsets.fromLTRB(0, 8, 0, 24), child: image)
+        : Container();
     switch (type) {
       case AlertType.success:
-        response = Image.asset(
-          '$kImagePath/icon_success.png',
-          package: 'rflutter_alert',
-        );
+        response = Padding(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 24),
+            child: Image.asset(
+              '$kImagePath/icon_success.png',
+              package: 'rflutter_alert',
+            ));
         break;
       case AlertType.error:
-        response = Image.asset(
-          '$kImagePath/icon_error.png',
-          package: 'rflutter_alert',
-        );
+        response = Padding(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 24),
+            child: Image.asset(
+              '$kImagePath/icon_error.png',
+              package: 'rflutter_alert',
+            ));
         break;
       case AlertType.info:
-        response = Image.asset(
-          '$kImagePath/icon_info.png',
-          package: 'rflutter_alert',
-        );
+        response = Padding(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 24),
+            child: Image.asset(
+              '$kImagePath/icon_info.png',
+              package: 'rflutter_alert',
+            ));
         break;
       case AlertType.warning:
-        response = Image.asset(
-          '$kImagePath/icon_warning.png',
-          package: 'rflutter_alert',
-        );
+        response = Padding(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 24),
+            child: Image.asset(
+              '$kImagePath/icon_warning.png',
+              package: 'rflutter_alert',
+            ));
         break;
       case AlertType.none:
         response = Container();

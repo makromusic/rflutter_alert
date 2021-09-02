@@ -21,7 +21,7 @@ class AlertStyle {
   final TextStyle titleStyle;
   final TextStyle descStyle;
   final EdgeInsets buttonAreaPadding;
-  final BoxConstraints constraints ;
+  final BoxConstraints constraints;
 
   /// Alert style constructor function
   /// The [animationType] parameter is used for transitions. Default: "fromBottom"
@@ -33,25 +33,24 @@ class AlertStyle {
   /// The [titleStyle] parameter sets alert title text style.
   /// The [descStyle] parameter sets alert desc text style.
   /// The [buttonAreaPadding] parameter sets button area padding.
-  const AlertStyle({
-    this.animationType = AnimationType.fromBottom,
-    this.animationDuration = const Duration(milliseconds: 200),
-    this.alertBorder,
-    this.isCloseButton = true,
-    this.isOverlayTapDismiss = true,
-    this.backgroundColor,
-    this.overlayColor = Colors.black87,
-    this.titleStyle = const TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.w500,
-        fontStyle: FontStyle.normal,
-        fontSize: 22.0),
-    this.descStyle = const TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.w400,
-        fontStyle: FontStyle.normal,
-        fontSize: 18.0),
-    this.buttonAreaPadding = const EdgeInsets.symmetric(horizontal:8.0,vertical: 10),
-    this.constraints
-  });
+  const AlertStyle(
+      {this.animationType = AnimationType.fromBottom,
+      this.animationDuration = const Duration(milliseconds: 200),
+      this.alertBorder,
+      this.isCloseButton = true,
+      this.isOverlayTapDismiss = true,
+      this.backgroundColor,
+      this.overlayColor = Colors.black87,
+      this.titleStyle = const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w500,
+          fontStyle: FontStyle.normal,
+          fontSize: 22.0),
+      this.descStyle = const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+          fontStyle: FontStyle.normal,
+          fontSize: 18.0),
+      this.buttonAreaPadding = const EdgeInsets.fromLTRB(16, 0, 0, 16),
+      this.constraints});
 }
