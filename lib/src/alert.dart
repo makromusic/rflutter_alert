@@ -11,6 +11,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/src/custom_animated_container.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'alert_style.dart';
 import 'animation_transition.dart';
@@ -24,7 +25,7 @@ class Alert {
   final BuildContext context;
   final AlertType type;
   final AlertStyle style;
-  final Image image;
+  final CachedNetworkImage image;
   final String title;
   final String desc;
   final String desc1;
